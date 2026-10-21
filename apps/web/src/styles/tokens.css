@@ -1,0 +1,82 @@
+/* magicKIDS Design Tokens — Documento Mestre + UI/UX Pro Max */
+
+:root {
+  /* Brand gradient */
+  --brand-from: #7c3aed;
+  --brand-via: #c026d3;
+  --brand-to: #ec4899;
+  --brand-gradient: linear-gradient(135deg, var(--brand-from), var(--brand-via), var(--brand-to));
+
+  /* Light */
+  --bg: #f5f3fc;
+  --card: #ffffff;
+  --text: #1b1533;
+  --text-secondary: #7a7295;
+  --border: #ebe6f7;
+  --highlight: #f1ecff;
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+
+  --radius-card: 20px;
+  --radius-nav: 24px;
+  --radius-chip: 9999px;
+  --shadow-soft: 0 4px 24px rgba(27, 21, 51, 0.06);
+  --touch-min: 44px;
+  --font-size-input: 16px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e0b1c;
+    --card: #181330;
+    --text: #f3effc;
+    --text-secondary: #a79fc0;
+    --border: #2a2347;
+    --highlight: #251e47;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --danger: #f87171;
+    --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
+  }
+}
+
+[data-theme="dark"] {
+  --bg: #0e0b1c;
+  --card: #181330;
+  --text: #f3effc;
+  --text-secondary: #a79fc0;
+  --border: #2a2347;
+  --highlight: #251e47;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f5f3fc;
+  --card: #ffffff;
+  --text: #1b1533;
+  --text-secondary: #7a7295;
+  --border: #ebe6f7;
+  --highlight: #f1ecff;
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --shadow-soft: 0 4px 24px rgba(27, 21, 51, 0.06);
+  color-scheme: light;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
