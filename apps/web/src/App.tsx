@@ -6,6 +6,15 @@ import type { Session } from '@supabase/supabase-js'
 import { BottomNav } from './components/layout/BottomNav'
 import { Login } from './pages/admin/Login'
 import { Inicio } from './pages/admin/Inicio'
+import { Agenda } from './pages/admin/Agenda'
+import { ReservaDetalhe } from './pages/admin/ReservaDetalhe'
+import { NovaReserva } from './pages/admin/NovaReserva'
+import { Estoque } from './pages/admin/Estoque'
+import { Pedidos } from './pages/admin/Pedidos'
+import { Financeiro } from './pages/admin/Financeiro'
+import { Ajustes } from './pages/admin/Ajustes'
+import { Reservar } from './pages/public/Reservar'
+import { Confirmacao } from './pages/public/Confirmacao'
 import './styles/tokens.css'
 
 const queryClient = new QueryClient({
@@ -46,23 +55,13 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }
 
-function Placeholder({ title }: { title: string }) {
-  return (
-    <div className="pb-28">
-      <h1 className="text-xl font-bold mb-2">{title}</h1>
-      <p className="text-sm text-[var(--text-secondary)]">
-        Tela em construção — Fase 1. Os dados já estão no Supabase.
-      </p>
-    </div>
-  )
-}
-
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Placeholder title="Página pública de reservas" />} />
+          <Route path="/" element={<Reservar />} />
+          <Route path="/confirmacao" element={<Confirmacao />} />
           <Route path="/admin/login" element={<Login />} />
           <Route
             path="/admin"
@@ -73,12 +72,14 @@ export default function App() {
             }
           >
             <Route index element={<Inicio />} />
-            <Route path="agenda" element={<Placeholder title="Agenda" />} />
-            <Route path="agenda/nova" element={<Placeholder title="Nova reserva" />} />
-            <Route path="pedidos" element={<Placeholder title="Pedidos online" />} />
-            <Route path="estoque" element={<Placeholder title="Estoque" />} />
-            <Route path="financeiro" element={<Placeholder title="Financeiro" />} />
-            <Route path="ajustes" element={<Placeholder title="Ajustes" />} />
+            <Route path="agenda" element={<Agenda />} />
+            <Route path="agenda/nova" element={<NovaReserva />} />
+            <Route path="agenda/:id" element={<ReservaDetalhe />} />
+            <Route path="agenda/:id/editar" element={<NovaReserva />} />
+            <Route path="pedidos" element={<Pedidos />} />
+            <Route path="estoque" element={<Estoque />} />
+            <Route path="financeiro" element={<Financeiro />} />
+            <Route path="ajustes" element={<Ajustes />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
